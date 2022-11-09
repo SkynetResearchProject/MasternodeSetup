@@ -1,0 +1,123 @@
+Instructions for running an active node on a vps server.
+
+Download the Putty client from the official website for your local OS.
+
+Run Putty, specify your vps server host or ip, port 22 and SSH by default, click the "Open" button.
+In the terminal window, enter the given login (usually root) and password.
+The password can be copied to the local OS and entered into Putty with a right click.
+All commands are entered under the root superuser.
+
+After authorization, you must:
+
+1. Download the archive with the latest version for Linux from the repository https://github.com/DiplexSoftfork/Skyrcoin/releases:
+
+   wget https://github.com/DiplexSoftfork/Skyrcoin/releases/download/v2.0.0.9-cs/skyrcoin-2.0.0.9-cs-linux-gnu-x64.tar.gz
+
+2. Unpack 3 utilities from the archive:
+
+   tar -xvf skyrcoin-2.0.0.9-cs-linux-gnu-x64.tar.gz
+
+   conclusion:
+   skyrcoind - node, daemon.
+   skyrcoin-cli - rpc client for sending commands to a node
+   skyrcoin-tx - utility "for working with transactions"
+
+
+3. Copy utilities to /usr/bin or run from root:
+    
+   skyrcoind -daemon -txindex - run from /usr/bin directory
+  
+   or
+
+   ./skyrcoind -daemon -txindex - run from tech. catalog
+
+   conclusion:
+Skyrcoin server starting
+
+   On the first run, the .skyrcoin blockchain directory is created
+
+4. Stop the daemon:
+ 
+  ./skyrcoin-cli stop - graceful shutdown
+
+   conclusion:
+Skyrcoin server stopping
+ 
+  Sometimes there are open tcp6 ports, after stopping the daemon can be killed with the command:
+
+  pkill -9 -f skyrcoind
+
+5. install the nano editor from an external repository:
+
+  (apt-get update etc)
+
+  apt-get -y install nano
+
+
+6. Edit the configuration file:
+
+  nano.skyrcoin/skyrcoin.conf
+
+rpcuser=...your..user
+rpcpassword=...your..pass
+rpcport=16890
+rpcallowip=127.0.0.1
+port=16888
+daemon=1
+txindex=1
+staking=0
+addnode=185.177.218.246 # <- ip of developer node
+
+Save (Ctrl+O, Enter) and close the editor (Ctrl+X).
+
+
+7. Run the node:
+
+  ./skyrcoind
+ 
+  or
+  ./skyrcoind -daemon -txindex # keys are already redundant
+  
+
+8. Check node operation:
+
+  ./skyrcoin-cli getinfo
+
+9. Request the number of blocks and check the synchronization using the explorer
+
+  ./skyrcoin-cli getblockcount
+
+The number of blocks must match the number of explorer blocks.
+
+To open the explorer, type In local OS browser: 185.177.218.246:3001
+
+The launch of the node can be checked by another command to open. ports:
+
+  netstst -tulnp | grep skyrcoind
+
+
+
+
+10. Register the task for loading in case of reboot of the server in the task scheduler.
+
+  crontab -e
+
+  select the nano editor. If you make the wrong choice, delete the .crontabeditor (or similar) file.
+
+Add a line at the end of the file (but this is not accurate, I did not restart c @reboot /root/skyrcoind -daemon -txindex):
+
+  @reboot cd /root && .skyrcoind -daemon -txindex
+
+Save and close the editor.
+
+Check autostart after server reboot using rpc commands.
+ 
+
+
+
+
+See the MasternodeSetup-ru.txt file for instructions on manually starting a masternode.
+
+
+You can start masternode 1 with skyr-masternode-install.sh script.
+Additional information is contained in the README.md file.

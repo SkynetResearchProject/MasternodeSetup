@@ -7,7 +7,7 @@ Skyrcoin masternode setup
 
 1. Skyrcoin(SKYR) for Collateral <br>
 (You can buy SKYR from exchange for collateral) <br>
-***вЂўhttps://www.occe.io/exchange/skyr_uah <br>***
+***- https://www.occe.io/exchange/skyr_uah <br>***
 
 2. Download Local Wallet for your operating system: : https://github.com/DiplexSoftfork/Skyrcoin/releases
 

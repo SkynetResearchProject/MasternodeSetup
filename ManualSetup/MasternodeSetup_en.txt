@@ -1,0 +1,80 @@
+Manual start of the masternode
+
+If you do not know the ip of your vps server, look at the settings in the control panel of your server
+Or run the following commands in a Linux terminal:
+
+        netstat -i | awk '!/Kernel|Iface|lo/ {print $1," "}'
+
+ conclusion:
+eth0 etc.
+
+curl --interface eth0 --connect-timeout 2 -s4 icanhazip.com
+
+ conclusion:
+        12.34.56.78 # ip of your server
+
+
+
+Create a new masternode private key:
+
+skyrcoin-cli createmasternodekey
+ 
+ conclusion:
+        6912345.....890 # private key of your masternode
+
+
+add the following lines to the skyrcoin.conf node config on the vps server (.skyrcoin/skyrcoin.conf):
+maxconnections=25
+bind=12.34.56.78
+masternode=1
+
+masternodeaddr=12.34.56.78:16888
+
+masternodeprivkey=6912345.....890
+
+Stop and restart the masternode with the new settings from the skyrcoin.conf file:
+
+skyrcoin-cli stop
+
+
+skyrcoind -txindex
+
+
+Examination:
+skyrcoin-cli getmasternodestatus
+{...}
+
+After that, in a local qt-purse, create a new address with any convenient label and send 400001 skyr to it (deposit amount and commission).
+To successfully activate the masternode, the transaction must contain one input in the amount of >=400000 + skyr commission and 2 outputs: the amount of deposit and change.
+In the qt-wallet, click on the send collateral transaction and copy its identifier (hash).
+Click the arrow next to the "Send To" field. A list of outputs/receiving addresses will open.
+Find the line with the amount of the deposit. The entry index is counted from top to bottom from zero. If the pledge is located in the first row from the top, then the entry index = 0.
+
+If the qt wallet is not available, then create a new address using the create newaddress cli command and send the deposit amount to it.
+To find out the collateral entry index, open the explorer https://185.177.218.246/:3001 and search for a transaction by its hash.
+The entry index is counted from top to bottom from zero.
+
+
+Add a new line to your local masternode.conf file:
+
+mn1 12.34.56.78:16888 12345.....890 34123......78 0
+
+#alias_MN ip:port pref. key MN hash_transaction_index_index (0 or 1)
+
+
+Save and restart your local wallet. If everything is done correctly, a new masternode will appear.
+
+Wait for the pledge transaction to reach 15 or more confirmations.
+Go to the masternode tab and activate it through the context menu. The masternode status should change to ACTIVE.
+
+To be safe, run the masternode with the command in the Debug Console:
+
+ startmasternode "alias" "0" "mn1" .
+
+
+
+
+All masternodes can be restarted with the startmasternode all 0 command. Read the help carefully before use, as the command can restart all active masternodes.
+
+After about 10 hours (500 confirmations), the status of the masternode will change to ENABLED. Your node will start working and maintain the network for a fee. Masternode staking is enabled at block 5001.
+Until block 5001 - masternode reward is zero, staking reward is 5 coins. After activation of the masternode, the reward of the masternode is 4, on a regular wallet - 1 coin.
