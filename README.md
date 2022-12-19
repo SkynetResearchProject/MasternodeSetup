@@ -11,7 +11,7 @@ Skyrcoin masternode setup
 
 2. Download Local Wallet for your operating system: : https://github.com/DiplexSoftfork/Skyrcoin/releases
 
-3. You will need also VPS with Ubuntu 16.04 or 18.04
+3. You will need also VPS with Ubuntu 16.04 or latter.
 
 **VPS WALLET:**
 
