@@ -9,9 +9,9 @@ All commands are entered under the root superuser.
 
 After authorization, you must:
 
-1. Download the archive with the latest version for Linux from the repository https://github.com/DiplexSoftfork/Skyrcoin/releases:
+1. Download the archive with the latest version for Linux from the repository https://github.com/SkynetResearchProject/Skyrcoin/releases:
 
-   wget https://github.com/DiplexSoftfork/Skyrcoin/releases/download/v2.0.0.9-cs/skyrcoin-2.0.0.9-cs-linux-gnu-x64.tar.gz
+   wget https://github.com/SkynetResearchProject/Skyrcoin/releases/download/v2.0.0.9-cs/skyrcoin-2.0.0.9-cs-linux-gnu-x64.tar.gz
 
 2. Unpack 3 utilities from the archive:
 

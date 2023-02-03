@@ -9,9 +9,9 @@
 
 После авторизации необходимо:
 
-1. Скачать архив c последней версией для линукс из депозитария https://github.com/DiplexSoftfork/Skyrcoin/releases:
+1. Скачать архив c последней версией для линукс из депозитария https://github.com/SkynetResearchProject/Skyrcoin/releases:
 
-   wget https://github.com/DiplexSoftfork/Skyrcoin/releases/download/v2.0.0.9-cs/skyrcoin-2.0.0.9-cs-linux-gnu-x64.tar.gz
+   wget https://github.com/SkynetResearchProject/Skyrcoin/releases/download/v2.0.0.9-cs/skyrcoin-2.0.0.9-cs-linux-gnu-x64.tar.gz
 
 2. Распаковать 3 утилиты из архива:
 

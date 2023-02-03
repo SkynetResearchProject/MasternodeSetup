@@ -9,7 +9,7 @@ Skyrcoin masternode setup
 (You can buy SKYR from exchange for collateral) <br>
 ***- https://www.occe.io/exchange/skyr_uah <br>***
 
-2. Download Local Wallet for your operating system: : https://github.com/DiplexSoftfork/Skyrcoin/releases
+2. Download Local Wallet for your operating system: : https://github.com/SkynetResearchProject/Skyrcoin/releases
 
 3. You will need also VPS with Ubuntu 16.04 or latter.
 
@@ -17,7 +17,7 @@ Skyrcoin masternode setup
 
 To install Skyrcoin(SKYR) Masternode use the following command:
 
-`bash <( curl -sL https://raw.githubusercontent.com/DiplexSoftfork/Skyrcoin/MasternodeSetup/main/skyr-masternode-install.sh`)
+`bash <( curl -sL https://raw.githubusercontent.com/SkynetResearchProject/Skyrcoin/MasternodeSetup/main/skyr-masternode-install.sh`)
 
 - Enjoy
 
